@@ -315,7 +315,7 @@ func (n *Node) findOrCreateSession(sid int64, gateAddr string) (*session.Session
 			rpcHandler: n.handler.remoteProcess,
 			gateAddr:   gateAddr,
 		}
-		s = session.New(ac)
+		s = session.NewWithID(ac, sid)
 		ac.session = s
 		n.mu.Lock()
 		n.sessions[sid] = s
